@@ -10,7 +10,7 @@ function Item({ index, item, onItemDelete }) {
   }
 
   return (
-    <li>
+    <li className="to-do-item">
       <span onClick={lineThroughItem}>
         <span className="task-id">{index}.</span>
         <span

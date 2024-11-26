@@ -5,6 +5,7 @@ const AppProvider = ({ children }) => {
     const [toDoList, setToDoList] = useState([]);
     const [userInput, setuserInput] = useState("");
     const [isCreateBtnIsClicked, setIsCreateBtnIsClicked] = useState(false);
+    const [showPreviousLists, setShowPreviousLists] = useState(false)
   
 
     const context = {
@@ -14,6 +15,8 @@ const AppProvider = ({ children }) => {
         setToDoList:setToDoList,
         isCreateBtnIsClicked:isCreateBtnIsClicked,
         setIsCreateBtnIsClicked:setIsCreateBtnIsClicked,
+        showPreviousLists: showPreviousLists,
+        setShowPreviousLists: setShowPreviousLists,
     }
 
 

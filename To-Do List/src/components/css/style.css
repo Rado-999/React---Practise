@@ -12,11 +12,13 @@ body {
   font-size: 130%;
 }
 
-.app{
+.app-container{
   display: flex;
 }
 
-.container {
+
+
+.list-maker-container {
   width: 100%;
   height: auto;
   min-height: 500px;
@@ -31,13 +33,27 @@ body {
   box-sizing: border-box;
   position: relative;
 }
-.heading {
+
+.previous-lists-container{
+  align-self: center;
+  min-width: 200px;
+  margin-left: 5px;
+}
+
+.previous-lists{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap:10px;
+}
+
+.list-maker-header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
 }
-.heading h1 {
+.list-maker-header h1 {
   transform: rotate(2deg);
   padding: 0.2rem 1.2rem;
   border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
@@ -85,16 +101,18 @@ button span {
 
 li {
   text-align: left;
-  position: relative;
+  list-style-type: none;
   padding: 0.5rem;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
 }
 
-ul {
-  padding: 0px 20px;
+.to-do-item{
+  display: flex;
+  justify-content: space-between;
+}
+
+ul{
+  padding:0px
 }
 
 .task-id {
@@ -172,6 +190,40 @@ ul {
 @keyframes scale {
   0% {transform: scale(1);}
   100% {transform: scale(1.2)}
+}
+
+
+.previous-lists-list-item  {
+  background-color: aquamarine;
+  padding:0px 20px 0px 10px ;
+  border-radius: 20px;
+  font-size: 20px;
+  height: 30px;
+  animation: lists-slide;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.previous-lists-list-item > span{
+  text-align: center;
+  display: block;
+  position: relative;
+  opacity: 0%;
+  animation: list-name;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes list-name {
+  0%{opacity: 0%; right: 50px;}
+  100%{opacity: 100%; right: 0px;}
+}
+
+@keyframes lists-slide {
+  0%{width: 0px;}
+  100%{width: 100%}
 }
 
 

@@ -2,14 +2,11 @@ import React from "react";
 import ViewPreviousLists from "./ViewPreviousLists";
 import CreateNewList from "./CreateNewList";
 
-function Navigation({ isCreateBtnIsClicked, setIsCreateBtnIsClicked ,toDoList }) {
+function Navigation() {
+
   return (
     <div className="navigation-bar">
-      <CreateNewList
-        isCreateBtnIsClicked={isCreateBtnIsClicked}
-        setIsCreateBtnIsClicked={setIsCreateBtnIsClicked}
-        toDoList = {toDoList}
-      />
+      <CreateNewList/>
       <ViewPreviousLists />
     </div>
   );
