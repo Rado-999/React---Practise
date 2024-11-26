@@ -12,6 +12,10 @@ body {
   font-size: 130%;
 }
 
+.app{
+  display: flex;
+}
+
 .container {
   width: 100%;
   height: auto;
@@ -147,15 +151,27 @@ ul {
   justify-content: space-around;
 }
 
-.save-btn:hover {
-  background-color: green;
-  position: relative;
-  animation: bounce 1s;
-  animation-direction: alternate
+.save-alert-buttons > button:hover {
+  animation: scale 0.3s;
+  animation-timing-function:ease-in;
+  animation-fill-mode: forwards;
 }
 
-@keyframes bounce {
-  0% {bottom: 0px;}
-  50%{bottom:10px}
-  100%{bottom: 0px;}
+.save-btn:hover {
+  background-color: green;
 }
+
+.dont-save-btn:hover{
+  background-color: rgb(255, 77, 77);
+}
+
+.cancel-btn:hover{
+  background-color: gray;
+}
+
+@keyframes scale {
+  0% {transform: scale(1);}
+  100% {transform: scale(1.2)}
+}
+
+

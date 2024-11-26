@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import DeleteBtn from "./DeleteBtn";
+import AppContext from "./Context/AppContext";
 
 function Item({ index, item, onItemDelete }) {
-  const [isDone, setIsDone] = useState(false);
+  const {isDone,setIsDone} = useContext(AppContext)
   item.isDone = isDone;
 
   function lineThroughItem() {

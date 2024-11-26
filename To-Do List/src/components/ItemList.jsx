@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Item from "./Item";
+import AppContext from "./Context/AppContext";
 
-function ItemList({ toDoList, onItemDelete }) {
+function ItemList() {
+  const {toDoList, setToDoList} = useContext(AppContext)
+
+  function onItemDelete(index) {
+    setToDoList((prevList) => [
+      ...prevList.filter((item) => item.id !== index),
+    ]);
+  }
+
   return (
     <ul>
       {toDoList.map((item,index) => (
