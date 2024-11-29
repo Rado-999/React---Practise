@@ -1,9 +1,12 @@
-import React, {useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeleteBtn from "./DeleteBtn";
 
 function Item({ index, item, onItemDelete }) {
-  const [isDone, setIsDone] = useState(false);
-  item.isDone = isDone;
+  const [isDone, setIsDone] = useState();
+  if (!item.hasOwnProperty('isDone')){
+    setIsDone(false)
+  }
+  item.isDone = isDone
 
   function lineThroughItem() {
     setIsDone(!isDone);

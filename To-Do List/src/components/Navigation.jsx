@@ -1,12 +1,12 @@
 import React from "react";
 import ViewPreviousLists from "./ViewPreviousLists";
-import CreateNewList from "./CreateNewList";
+import CreateListButton from "./CreateListButton";
 
 function Navigation() {
 
   return (
     <div className="navigation-bar">
-      <CreateNewList/>
+      <CreateListButton />
       <ViewPreviousLists />
     </div>
   );
