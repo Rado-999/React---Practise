@@ -1,6 +1,7 @@
 function DeleteBtn({ id, onItemDelete }) {
   return (
     <button
+    className="delete-btn"
       onClick={() => {
         onItemDelete(id);
       }}

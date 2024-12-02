@@ -12,11 +12,12 @@ body {
   font-size: 130%;
 }
 
-.app{
+.app-container {
   display: flex;
 }
 
-.container {
+.list-maker-container {
+  overflow: hidden;
   width: 100%;
   height: auto;
   min-height: 500px;
@@ -27,23 +28,39 @@ body {
   background-size: 25px 25px;
   border-radius: 20px;
   box-shadow: 4px 3px 7px 2px #00000040;
-  padding: 1rem;
   box-sizing: border-box;
   position: relative;
 }
-.heading {
+
+.previous-lists-container {
+  align-self: center;
+  min-width: 200px;
+  margin-left: 5px;
+}
+
+.previous-lists {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.list-maker-header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  padding: 0px 1rem;
 }
-.heading h1 {
+
+.list-maker-header h1 {
   transform: rotate(2deg);
   padding: 0.2rem 1.2rem;
   border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
   background-color: #fdcb6e;
   font-size: 1.5rem;
 }
+
 
 .form input {
   box-sizing: border-box;
@@ -58,6 +75,10 @@ body {
   color: hsla(260, 2%, 25%, 0.7);
   width: 70%;
   margin-bottom: 20px;
+}
+
+.list{
+  padding: 0px 1rem;
 }
 
 button {
@@ -83,18 +104,26 @@ button span {
   padding: 0px;
 }
 
+.delete-btn {
+  padding: 5px;
+}
+
 li {
   text-align: left;
-  position: relative;
+  list-style-type: none;
   padding: 0.5rem;
   cursor: pointer;
+}
+
+.to-do-item {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  align-items: center;
 }
 
 ul {
-  padding: 0px 20px;
+  padding: 0px;
 }
 
 .task-id {
@@ -106,7 +135,9 @@ ul {
 }
 
 .navigation-bar {
+  padding: 0px 1rem;
   display: flex;
+  gap: 60px;
   justify-content: space-between;
   margin-bottom: 20px;
 }
@@ -153,7 +184,7 @@ ul {
 
 .save-alert-buttons > button:hover {
   animation: scale 0.3s;
-  animation-timing-function:ease-in;
+  animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
 
@@ -161,17 +192,82 @@ ul {
   background-color: green;
 }
 
-.dont-save-btn:hover{
+.dont-save-btn:hover {
   background-color: rgb(255, 77, 77);
 }
 
-.cancel-btn:hover{
+.cancel-btn:hover {
   background-color: gray;
 }
 
+.delete-list-btn:hover{
+  background-color: red;
+}
+
 @keyframes scale {
-  0% {transform: scale(1);}
-  100% {transform: scale(1.2)}
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.previous-lists-list-item {
+  background-color: aquamarine;
+  padding: 0px 20px 0px 10px;
+  border-radius: 20px;
+  font-size: 20px;
+  height: 30px;
+  animation: lists-slide;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.previous-lists-list-item > span {
+  text-align: center;
+  display: block;
+  position: relative;
+  opacity: 0%;
+  animation: list-name;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes list-name {
+  0% {
+    opacity: 0%;
+    right: 50px;
+  }
+  100% {
+    opacity: 100%;
+    right: 0px;
+  }
+}
+
+@keyframes lists-slide {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 
+.footer-buttons{
+  border-top: 1px solid gray;
+  padding: 1rem;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+
+.footer-buttons > button{
+  font-size: 20px;
+}
