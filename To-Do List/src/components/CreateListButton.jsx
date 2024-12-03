@@ -8,16 +8,20 @@ function CreateListButton() {
     setShowSaveAlert,
     currentList,
     setIsCreateBtnIsClicked,
-    isSaved
+    isSaved,
+    setProceedAfterSave,
   } = useContext(AppContext);
-
-  
 
   return (
     <button
-      onClick={
-        ()=> isSaved ? setIsCreateBtnIsClicked(true) : setShowSaveAlert(true)
-      }
+      onClick={() => {
+        if (isSaved) {
+          setIsCreateBtnIsClicked(true);
+        } else {
+          setProceedAfterSave(true); 
+          setShowSaveAlert(true); 
+        }
+      }}
     >
       Create New List
     </button>

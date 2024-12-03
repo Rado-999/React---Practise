@@ -3,27 +3,26 @@ import AppContext from "./Context/AppContext";
 import CurrentList from "./CurrentList";
 
 function PreviousLists() {
-  const {currentList , showPreviousLists, listCollection, setCurrentList,isSaved ,setShowSaveAlert , setPreviousItemIsClicked} = useContext(AppContext);
+  const {currentList , showPreviousLists, listCollection, setCurrentList,isSaved ,setShowSaveAlert , clickedPrevItem, setClickedPrevItem,nextList, setNextList} = useContext(AppContext);
 
   function createPreviousListItem(item) {
     return (
-      <li className="previous-lists-list-item" onClick={()=>handlePreviousListClick(item.listName)}>
+      <li className="previous-lists-list-item" onClick={()=>handlePreviousListClick(item)}>
         <span>{item.listName}</span>
       </li>
     );
   }
 
-  function handlePreviousListClick(listName){
-    if (currentList.listName === listName){
+  function handlePreviousListClick(item){
+    setNextList(item)
+    if (item.listName === currentList.listName){
       return
     }
-    if (!isSaved){
+    if (isSaved){
+      setCurrentList(item)
+    }else{
       setShowSaveAlert(true)
-      setPreviousItemIsClicked(true)
     }
-    const obj = listCollection.find(listItem => listItem.listName === listName);
-    setCurrentList(obj)
-    console.log(currentList)
   }
 
   if (showPreviousLists) {
