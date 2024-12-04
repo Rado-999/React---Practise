@@ -15,6 +15,7 @@ const AppProvider = ({ children }) => {
   const [nextList, setNextList] = useState(null);
   const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false)
   const nextListRef = useRef(null)
+  const collectionRef = useRef(listCollection)
 
   function handleSaveListBtn() {
     console.log(nextList)
@@ -65,7 +66,8 @@ const AppProvider = ({ children }) => {
     setProceedAfterSave: setProceedAfterSave,
     isDeleteBtnClicked:isDeleteBtnClicked,
     setIsDeleteBtnClicked:setIsDeleteBtnClicked,
-    nextListRef:nextListRef
+    nextListRef:nextListRef,
+    collectionRef:collectionRef
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
