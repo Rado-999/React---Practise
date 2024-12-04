@@ -6,6 +6,7 @@ import CreateListAlert from "./CreateListAlert";
 import AppContext from "./Context/AppContext";
 import Navigation from "./Navigation";
 import ListFooter from "./ListFooter";
+import DeleteListAlert from "./DeleteListAlert";
 
 function CurrentList() {
   const [number, setNumber] = useState(1);
@@ -18,7 +19,8 @@ function CurrentList() {
     setCurrentList,
     setListCollection,
     listCollection,
-    setIsSaved
+    setIsSaved,
+    isDeleteBtnClicked
   } = useContext(AppContext);
   
 
@@ -58,8 +60,11 @@ function CurrentList() {
     if (showSaveAlert) {
       return <SaveAlert />;
     } else if (isCreateBtnIsClicked) {
-      return <CreateListAlert />;
-    } else {
+      return <CreateListAlert />
+    }else if (isDeleteBtnClicked){
+      return <DeleteListAlert />
+    }
+     else {
       return (
         <div className="list-container">
           <h4>{currentList.listName}</h4>

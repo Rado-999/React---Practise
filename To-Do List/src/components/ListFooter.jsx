@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "./Context/AppContext";
 
 function ListFooter() {
-    const {setListCollection, currentList, setIsSaved} = useContext(AppContext)
+    const {setListCollection, currentList, setIsSaved,setIsDeleteBtnClicked} = useContext(AppContext)
 
     function saveCurrentList(){
       setIsSaved(true)
@@ -14,9 +14,11 @@ function ListFooter() {
         ;})
     }
 
+
+
   return (
     <div className="footer-buttons">
-        <button className="delete-list-btn">Delete</button>
+        <button className="delete-list-btn" onClick={()=>setIsDeleteBtnClicked(true)}>Delete</button>
         <button onClick = {saveCurrentList} className="save-btn">Save</button>
     </div>
   );

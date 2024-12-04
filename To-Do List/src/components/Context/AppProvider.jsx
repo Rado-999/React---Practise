@@ -1,5 +1,5 @@
 import AppContext from "./AppContext";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 const AppProvider = ({ children }) => {
   const [listCollection, setListCollection] = useState([]);
@@ -13,8 +13,11 @@ const AppProvider = ({ children }) => {
   const [currentList, setCurrentList] = useState();
   const [isSaved, setIsSaved] = useState(true);
   const [nextList, setNextList] = useState(null);
+  const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false)
+  const nextListRef = useRef(null)
 
   function handleSaveListBtn() {
+    console.log(nextList)
     setIsSaved(true);
     setShowSaveAlert(false);
     if (nextList) {
@@ -60,6 +63,9 @@ const AppProvider = ({ children }) => {
     setNextList: setNextList,
     proceedAfterSave: proceedAfterSave,
     setProceedAfterSave: setProceedAfterSave,
+    isDeleteBtnClicked:isDeleteBtnClicked,
+    setIsDeleteBtnClicked:setIsDeleteBtnClicked,
+    nextListRef:nextListRef
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

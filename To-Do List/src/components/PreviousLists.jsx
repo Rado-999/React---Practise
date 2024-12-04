@@ -3,7 +3,7 @@ import AppContext from "./Context/AppContext";
 import CurrentList from "./CurrentList";
 
 function PreviousLists() {
-  const {currentList , showPreviousLists, listCollection, setCurrentList,isSaved ,setShowSaveAlert , clickedPrevItem, setClickedPrevItem,nextList, setNextList} = useContext(AppContext);
+  const {currentList , showPreviousLists, listCollection, setCurrentList,isSaved ,setShowSaveAlert , clickedPrevItem, setClickedPrevItem,nextList, setNextList, nextListRef} = useContext(AppContext);
 
   function createPreviousListItem(item) {
     return (
@@ -15,6 +15,7 @@ function PreviousLists() {
 
   function handlePreviousListClick(item){
     setNextList(item)
+    nextListRef.current = item
     if (item.listName === currentList.listName){
       return
     }
