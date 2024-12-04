@@ -5,7 +5,6 @@ function SaveAlert(){
     const {proceedAfterSave,setProceedAfterSave, setCurrentList, currentList ,handleSaveListBtn,setIsCreateBtnIsClicked, setIsSaved, nextList, setNextList , setShowSaveAlert, nextListRef} = useContext(AppContext)
 
     function handleDontSaveBtn(){
-        console.log(nextListRef.current)
         setIsSaved(true)
         setShowSaveAlert(false)
         if (nextListRef.current) {
