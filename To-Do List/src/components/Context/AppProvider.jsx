@@ -1,5 +1,5 @@
 import AppContext from "./AppContext";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const AppProvider = ({ children }) => {
   const [listCollection, setListCollection] = useState([]);
@@ -7,29 +7,37 @@ const AppProvider = ({ children }) => {
   const [collectionId, setCollectionId] = useState(1);
   const [toDoList, setToDoList] = useState([]);
   const [userInput, setuserInput] = useState("");
+  const [proceedAfterSave, setProceedAfterSave] = useState(false);
   const [isCreateBtnIsClicked, setIsCreateBtnIsClicked] = useState(false);
   const [showPreviousLists, setShowPreviousLists] = useState(false);
   const [currentList, setCurrentList] = useState();
-  const [isSaved,setIsSaved] = useState(true)
-  const [previousItemIsClicked , setPreviousItemIsClicked] = useState(false)
+  const [isSaved, setIsSaved] = useState(true);
+  const [nextList, setNextList] = useState(null);
+  const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false)
+  const nextListRef = useRef(null)
 
-  function handleSaveListBtn(){
-    if (showSaveAlert){
-      setShowSaveAlert(false)
-      if (!previousItemIsClicked){
-        setIsCreateBtnIsClicked(true)
-      }
+  function handleSaveListBtn() {
+    console.log(nextList)
+    setIsSaved(true);
+    setShowSaveAlert(false);
+    if (nextList) {
+      setCurrentList(nextList);
+      setNextList(null);
     }
-    setIsSaved(true)
-    console.log(currentList)
-    setListCollection((prevState)=>{
-      const obj = prevState.find((list) => list.id === currentList.id);
-      const objIndex = prevState.indexOf(obj)
-      prevState[objIndex] = currentList
-      return prevState
-    })
-  }
+    setListCollection((prevCollection) => {
+      const listIndex = prevCollection.findIndex(
+        (list) => list.id === currentList.id
+      );
+      const updatedCollection = prevCollection;
+      updatedCollection[listIndex] = currentList;
+      return updatedCollection;
+    });
 
+    if (proceedAfterSave) {
+      setProceedAfterSave(false)
+      setIsCreateBtnIsClicked(true)
+    }
+  }
 
   const context = {
     userInput: userInput,
@@ -49,10 +57,15 @@ const AppProvider = ({ children }) => {
     currentList: currentList,
     setCurrentList: setCurrentList,
     isListCollecionEmpty: listCollection.length === 0,
-    handleSaveListBtn:handleSaveListBtn,
-    isSaved:isSaved,
-    setIsSaved:setIsSaved,
-    setPreviousItemIsClicked:setPreviousItemIsClicked,
+    handleSaveListBtn: handleSaveListBtn,
+    isSaved: isSaved,
+    setIsSaved: setIsSaved,
+    setNextList: setNextList,
+    proceedAfterSave: proceedAfterSave,
+    setProceedAfterSave: setProceedAfterSave,
+    isDeleteBtnClicked:isDeleteBtnClicked,
+    setIsDeleteBtnClicked:setIsDeleteBtnClicked,
+    nextListRef:nextListRef
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

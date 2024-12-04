@@ -142,7 +142,7 @@ ul {
   margin-bottom: 20px;
 }
 
-.save-alert-container {
+.alert-container {
   margin-top: 10px;
   position: absolute;
   top: 65%;
@@ -169,20 +169,20 @@ ul {
   }
 }
 
-.save-alert-container button {
+.alert button {
   font-size: 0.8em;
 }
 
-.save-alert-header > span {
+.alert-header > span {
   display: block;
 }
 
-.save-alert-buttons {
+.alert-buttons {
   display: flex;
   justify-content: space-around;
 }
 
-.save-alert-buttons > button:hover {
+.alert-buttons > button:hover {
   animation: scale 0.3s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
