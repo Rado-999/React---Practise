@@ -2,23 +2,24 @@ import React, { useContext } from "react";
 import AppContext from "./Context/AppContext";
 import CreateList from "./CreateList";
 import ListMenu from "./ListMenu";
+import SaveAlert from "./SaveAlert";
 
 function ListContainer() {
-  const { listCollection, createBtnIsClicked } = useContext(AppContext);
+  const { listsCollection, createBtnIsClicked, showSaveAlert } =
+    useContext(AppContext);
 
-  function isListCollectionEmpty() {
-    return listCollection.length === 0;
+  function isListsCollectionEmpty() {
+    return listsCollection.length === 0;
   }
 
-  function manageList(){
-    if (isListCollectionEmpty || createBtnIsClicked ){
-        return <CreateList />
+  function manageList() {
+    if (isListsCollectionEmpty() || createBtnIsClicked) {
+      return <CreateList />;
     }
-    if (showSaveAlert){
-        return <SaveAlert />
+    if (showSaveAlert) {
+      return <SaveAlert />;
     }
-    return <ListMenu />
-
+    return <ListMenu />;
   }
 
   return (
