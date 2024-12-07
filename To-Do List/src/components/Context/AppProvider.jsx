@@ -4,7 +4,6 @@ import React, { useState } from "react";
 const AppProvider = ({ children }) => {
   const [listsCollection, setListCollection] = useState(['asd'])
   const [createBtnIsClicked ,setCreateBtnIsClicked] = useState(false)
-  const [showSaveAlert, setShowSaveAlert] = useState(false)
   const [isSaved, setIsSaved] = useState(true)
   const [itemID, setItemID] = useState(0)
 
@@ -14,8 +13,6 @@ const AppProvider = ({ children }) => {
     setListCollection:setListCollection,
     createBtnIsClicked:createBtnIsClicked,
     setCreateBtnIsClicked:setCreateBtnIsClicked,
-    showSaveAlert:showSaveAlert,
-    setShowSaveAlert:setShowSaveAlert,
     isSaved:isSaved,
     setIsSaved:setIsSaved,
     itemID:itemID,

@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import AppContext from "./Context/AppContext";
 import CreateList from "./CreateList";
 import ListMenu from "./ListMenu";
-import SaveAlert from "./SaveAlert";
 
 function ListContainer() {
-  const { listsCollection, createBtnIsClicked, showSaveAlert } =
+  const { listsCollection, createBtnIsClicked} =
     useContext(AppContext);
 
   function isListsCollectionEmpty() {
@@ -16,15 +15,12 @@ function ListContainer() {
     if (isListsCollectionEmpty() || createBtnIsClicked) {
       return <CreateList />;
     }
-    if (showSaveAlert) {
-      return <SaveAlert />;
-    }
     return <ListMenu />;
   }
 
   return (
-    <div className="list-menu-container">
-      <h1 className="list-menu-header">To-Do List</h1>
+    <div className="list-container">
+      <h1 className="list-header">To-Do List</h1>
       {manageList()}
     </div>
   );

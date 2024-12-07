@@ -4,10 +4,10 @@ function ToDoItem(){
     const [isDone,setIsDone] = useState()
 
     return (
-        <div className="to-do-item-container">
-            <span className="to-do-item-number"></span>
-            <p className="to-do-item"></p>
-            {isDone && <button>Delete</button>}
+        <div className="todo-item-container">
+            <span className="todo-item-number">1</span>
+            <p className="todo-item">Go to the gym</p>
+            <button className="todo-delete">Delete</button>
         </div>
     )
 }

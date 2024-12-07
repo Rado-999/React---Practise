@@ -3,8 +3,8 @@ import React from "react";
 function ToDoItemInput() {
   return (
     <form className="item-input-form">
-      <input type="text" placeholder="Shopping" />
-      <button type="submit">
+      <input className="todo-input" type="text" placeholder="Add a new task..." />
+      <button className="todo-btn">
         <span>Add</span>
       </button>
     </form>
