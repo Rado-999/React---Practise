@@ -1,16 +1,24 @@
 import React, { useContext } from "react";
 import AppContext from "./Context/AppContext";
-import ToDoItem from "./ToDoItem"
+import ToDoItem from "./ToDoItem";
 
-function CurrentList(){
-    const {listsCollection,isSaved,itemID,setItemID} = useContext(AppContext)
+function CurrentList() {
+  const { currentList,setCurrentList } = useContext(AppContext);
 
-    return(
-        <div className="current-list-container">
-            {listsCollection.map((item)=><ToDoItem key = {1} id={2} item={item} />)}
-            {!isSaved && <button className="current-list-save-btn">Save</button>}
-        </div>
-    )
+    function deleteTask (taskID) {
+        setCurrentList((prevState)=>({
+            ...prevState,
+            tasks:prevState['tasks'].filter((task)=> task.taskID !== taskID)
+        }))
+    }
+
+  return (
+    <div className="current-list-container">
+      {currentList["tasks"].map((task, index) => (
+        <ToDoItem deleteTask= {deleteTask} key={task.taskID} taskInfo={task} number={index + 1} />
+      ))}
+    </div>
+  );
 }
 
-export default CurrentList
+export default CurrentList;

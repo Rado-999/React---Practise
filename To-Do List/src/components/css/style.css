@@ -194,7 +194,7 @@ body {
 .todo-item-container{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 10px 20px;
   width: 100%;
   gap: 20px;
@@ -211,11 +211,12 @@ body {
 .todo-item{
   flex: 1;
   font-size: 1.2rem;
+  text-align: left;
   margin: 0px;
   max-width: 200px;
   color: #333333;
   cursor: pointer;
-  /* position: relative; */
+  position: relative;
   transition: color 0.3s ease;
 }
 
@@ -230,8 +231,8 @@ body {
   right: 0;
   bottom: 50%;
   height: 2px;
-  background: #6c63ff;
-  animation: line-through 0.3s ease forwards;
+  background: #c46f00;
+  animation: line-through 0.5s ease forwards;
 }
 
 @keyframes line-through {
@@ -266,7 +267,7 @@ body {
   transform: translateY(1px);
 }
 
-/* Create List Input  */
+/* Create List  */
 
 .create-list-alert-container {
   background: #ffb223a1;
@@ -297,7 +298,7 @@ body {
 
 .create-list-alert-input {
   width: 80%;
-  padding: 5px;
+  padding: 5px 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
@@ -327,6 +328,128 @@ body {
 .create-list-alert-create-btn:hover {
   background: #ff9100;
 }
+
+
+.delete-container {
+  max-width: 350px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delete-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.delete-header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ff4d4d;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.delete-alert {
+  font-size: 1rem;
+  color: #555555;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0;
+  animation: fadeInAlert 0.6s ease-out 0.3s forwards; 
+}
+
+@keyframes fadeInAlert {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.delete-list-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fd770a;
+  padding: 8px 16px;
+  letter-spacing: 1px;
+  transform: scale(0);
+  animation: scaleUp 0.4s ease-out 0.7s forwards;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.delete-button {
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+.delete-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+  z-index: 0;
+}
+
+.delete-button:hover::before {
+  width: 100%;
+}
+
+.delete-button span {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* Previous Lists Menu Design */
 

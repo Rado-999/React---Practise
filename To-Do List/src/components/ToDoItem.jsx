@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 
-function ToDoItem(){
-    const [isDone,setIsDone] = useState()
+function ToDoItem({ taskInfo, number, deleteTask }) {
+  const [isDone, setIsDone] = useState(false);
 
-    return (
-        <div className="todo-item-container">
-            <span className="todo-item-number">1</span>
-            <p className="todo-item">Go to the gym</p>
-            <button className="todo-delete">Delete</button>
-        </div>
-    )
+  function handleTaskNameClick() {
+    setIsDone(!isDone);
+  }
+
+  function handleDeleteBtnClick() {
+    deleteTask(taskInfo.taskID)
+  }
+
+  return (
+    <div className={`todo-item-container`}>
+      <span className="todo-item-number">{number}</span>
+      <p onClick={handleTaskNameClick} className={`todo-item ${isDone ? "completed" : ""}`}>
+        {taskInfo.taskName}
+      </p>
+      {isDone && (
+        <button onClick={handleDeleteBtnClick} className="todo-delete">
+          Delete
+        </button>
+      )}
+    </div>
+  );
 }
 
-export default ToDoItem
+export default ToDoItem;

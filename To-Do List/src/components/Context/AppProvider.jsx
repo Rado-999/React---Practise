@@ -6,6 +6,8 @@ const AppProvider = ({ children }) => {
   const [createBtnIsClicked ,setCreateBtnIsClicked] = useState(false)
   const [isSaved, setIsSaved] = useState(true)
   const [itemID, setItemID] = useState(0)
+  const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false)
+  const [currentList,setCurrentList] = useState({tasks:[]})
 
 
   const context = {
@@ -17,6 +19,10 @@ const AppProvider = ({ children }) => {
     setIsSaved:setIsSaved,
     itemID:itemID,
     setItemID:setItemID,
+    deleteBtnIsClicked:deleteBtnIsClicked,
+    setDeleteBtnIsClicked:setDeleteBtnIsClicked,
+    currentList:currentList,
+    setCurrentList:setCurrentList,
   }
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
