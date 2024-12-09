@@ -9,7 +9,7 @@ function ListMenu() {
   const [taskID, setTaskID] = useState(1);
   const {
     setCreateBtnIsClicked,
-    setDeleteBtnIsClicked,
+    setDeleteListBtnIsClicked,
     currentList,
     setCurrentList,
   } = useContext(AppContext);
@@ -19,12 +19,12 @@ function ListMenu() {
   }
 
   function handleDeleteListBtn() {
-    setDeleteBtnIsClicked(true);
+    setDeleteListBtnIsClicked(true);
   }
 
   function handleAddTask(userToDoItemInput) {
     const currentListToDoTasks = currentList["tasks"];
-    const itemsToLowerCase = currentListToDoTasks.map((task) =>
+    const tasksToLowerCase = currentListToDoTasks.map((task) =>
       task.taskName.toLowerCase()
     );
     if (userToDoItemInput.length < 3 || itemAlreadyInListCollection()) {
@@ -32,7 +32,7 @@ function ListMenu() {
     }
 
     function itemAlreadyInListCollection() {
-      return itemsToLowerCase.includes(userToDoItemInput.toLowerCase());
+      return tasksToLowerCase.includes(userToDoItemInput.toLowerCase());
     }
 
     setCurrentList((prevState) => ({
@@ -63,6 +63,7 @@ function ListMenu() {
           <FontAwesomeIcon className="icon" icon={faTrash} />
         </button>
       </div>
+      <h1 className="list-menu-list-title">{currentList.listName}</h1>
       <ToDoItemInput handleAddTask={handleAddTask} />
       <CurrentList />
     </div>

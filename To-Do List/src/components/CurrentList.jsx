@@ -3,7 +3,7 @@ import AppContext from "./Context/AppContext";
 import ToDoItem from "./ToDoItem";
 
 function CurrentList() {
-  const { currentList,setCurrentList } = useContext(AppContext);
+  const { currentList,setCurrentList} = useContext(AppContext);
 
     function deleteTask (taskID) {
         setCurrentList((prevState)=>({

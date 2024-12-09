@@ -30,7 +30,6 @@ body {
   box-shadow: 4px 3px 7px 2px #00000040;
 }
 
-
 /* Header */
 
 .list-header {
@@ -124,9 +123,20 @@ body {
   left: 20px;
 }
 
+/* List Title */
+.list-menu-list-title {
+  display:flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ad6200;
+  letter-spacing: 1px;
+}
+
+
 /* Item Input */
 
-.item-input-form{
+.item-input-form {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,10 +144,9 @@ body {
   padding: 10px 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
   width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom:20px ;
+  margin-bottom: 20px;
 }
 
 .item-input-form:hover {
@@ -154,7 +163,6 @@ body {
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .todo-input:focus {
   border-color: #e68507;
@@ -185,13 +193,13 @@ body {
 
 /* Current List Container */
 
-.current-list-container{
+.current-list-container {
   border: 1px solid saddlebrown;
 }
 
 /* Item Container */
 
-.todo-item-container{
+.todo-item-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -201,19 +209,18 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.todo-item-number{
+.todo-item-number {
   font-size: 1.5rem;
   font-weight: bold;
   color: #ffa836;
   flex-shrink: 0;
 }
 
-.todo-item{
+.todo-item {
   flex: 1;
   font-size: 1.2rem;
   text-align: left;
   margin: 0px;
-  max-width: 200px;
   color: #333333;
   cursor: pointer;
   position: relative;
@@ -225,7 +232,7 @@ body {
 }
 
 .todo-item.completed::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -270,6 +277,7 @@ body {
 /* Create List  */
 
 .create-list-alert-container {
+  position: relative;
   background: #ffb223a1;
   padding: 10px 0px;
   border-radius: 10px;
@@ -329,9 +337,9 @@ body {
   background: #ff9100;
 }
 
-
 .delete-container {
   max-width: 350px;
+  position: relative;
   padding: 30px;
   background-color: #f9f9f9;
   border-radius: 15px;
@@ -376,7 +384,7 @@ body {
   font-weight: 400;
   margin: 0;
   opacity: 0;
-  animation: fadeInAlert 0.6s ease-out 0.3s forwards; 
+  animation: fadeInAlert 0.6s ease-out 0.3s forwards;
 }
 
 @keyframes fadeInAlert {
@@ -429,7 +437,7 @@ body {
 }
 
 .delete-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -450,6 +458,28 @@ body {
   z-index: 1;
 }
 
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: #929292;
+  color: #000000;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  line-height: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #6b6b6b;
+  transform: scale(1.1);
+}
 
 /* Previous Lists Menu Design */
 
@@ -481,7 +511,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.3s ease;
-  overflow: hidden; 
+  overflow: hidden;
   animation: slide-in ease 0.5s;
 }
 
@@ -490,9 +520,8 @@ body {
   transform: translateY(-2px);
 }
 
-
 .collection-item::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
@@ -500,13 +529,13 @@ body {
   height: 0;
   border: 1px solid rgb(223, 96, 5);
   box-sizing: border-box;
-  transition: height 0.2s ease, width 0.2s ease 0.2s; 
+  transition: height 0.2s ease, width 0.2s ease 0.2s;
 }
 
 .collection-item:hover::after {
   border: 2px solid #ff9a17;
-  height: 100%; 
-  width: 100%; 
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes slide-in {
@@ -519,3 +548,6 @@ body {
     transform: translateY(0);
   }
 }
+
+
+

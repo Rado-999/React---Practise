@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import AppContext from "./Context/AppContext";
 
 function CollectionsContainer() {
+  const {listsCollection,setCurrentList,currentList} = useContext(AppContext)
+
+  function showPreviousList(list){
+    if(currentList.listName !== list.listName){
+      setCurrentList(list)
+    }
+
+  }
+
+
   return (
     <div className="collection-container">
-      <div className="collection-item">Shopping List</div>
-      <div className="collection-item">Work Tasks</div>
-      <div className="collection-item">Personal Goals</div>
+      {listsCollection.map((list)=> <div key={list.id} onClick={()=>{showPreviousList(list)}} className="collection-item">{list.listName}</div>)}
     </div>
   );
 }

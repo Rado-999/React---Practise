@@ -1,29 +1,36 @@
 import AppContext from "./AppContext";
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 
 const AppProvider = ({ children }) => {
-  const [listsCollection, setListCollection] = useState(['asd'])
-  const [createBtnIsClicked ,setCreateBtnIsClicked] = useState(false)
-  const [isSaved, setIsSaved] = useState(true)
-  const [itemID, setItemID] = useState(0)
-  const [deleteBtnIsClicked, setDeleteBtnIsClicked] = useState(false)
-  const [currentList,setCurrentList] = useState({tasks:[]})
+  const [listsCollection, setListCollection] = useState([]);
+  const [createBtnIsClicked, setCreateBtnIsClicked] = useState(false);
+  const [deleteListBtnIsClicked, setDeleteListBtnIsClicked] = useState(false);
+  const [currentList, setCurrentList] = useState({ tasks: [] });
+  const [collectionID, setCollectionID] = useState(1);
+
+  useEffect(() => {
+    setListCollection((prevState) => {
+      const currentListIndexInListCollection = prevState.findIndex((list)=> list.listName === currentList.listName);
+      let updatedListCollection = prevState;
+      updatedListCollection[currentListIndexInListCollection] = currentList;
+      return updatedListCollection;
+    });
+  }, [currentList]);
+
 
 
   const context = {
-    listsCollection:listsCollection,
-    setListCollection:setListCollection,
-    createBtnIsClicked:createBtnIsClicked,
-    setCreateBtnIsClicked:setCreateBtnIsClicked,
-    isSaved:isSaved,
-    setIsSaved:setIsSaved,
-    itemID:itemID,
-    setItemID:setItemID,
-    deleteBtnIsClicked:deleteBtnIsClicked,
-    setDeleteBtnIsClicked:setDeleteBtnIsClicked,
-    currentList:currentList,
-    setCurrentList:setCurrentList,
-  }
+    listsCollection: listsCollection,
+    setListCollection: setListCollection,
+    createBtnIsClicked: createBtnIsClicked,
+    setCreateBtnIsClicked: setCreateBtnIsClicked,
+    deleteListBtnIsClicked: deleteListBtnIsClicked,
+    setDeleteListBtnIsClicked: setDeleteListBtnIsClicked,
+    currentList: currentList,
+    setCurrentList: setCurrentList,
+    collectionID: collectionID,
+    setCollectionID: setCollectionID,
+  };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };

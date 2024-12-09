@@ -2,22 +2,26 @@ import React, { useContext } from "react";
 import AppContext from "./Context/AppContext";
 import CreateList from "./CreateList";
 import ListMenu from "./ListMenu";
-import DeleteAlert from "./DeleteAlert"
+import DeleteList from "./DeleteList"
 
 function ListContainer() {
-  const { listsCollection, createBtnIsClicked, deleteBtnIsClicked} =
+  const { listsCollection, createBtnIsClicked,setCreateBtnIsClicked, deleteListBtnIsClicked,setDeleteListBtnIsClicked} =
     useContext(AppContext);
 
-  function isListsCollectionEmpty() {
+  function listCollectionIsEmpty() {
     return listsCollection.length === 0;
   }
 
+  function handleCancleButton(){
+    createBtnIsClicked ? setCreateBtnIsClicked(false): setDeleteListBtnIsClicked(false)
+  }
+
   function manageList() {
-    if (isListsCollectionEmpty() || createBtnIsClicked) {
-      return <CreateList />;
+    if (listCollectionIsEmpty() || createBtnIsClicked) {
+      return <CreateList handleCancleButton={handleCancleButton} listCollectionIsEmpty ={listCollectionIsEmpty} />;
     }
-    if(deleteBtnIsClicked){
-      return <DeleteAlert />
+    if(deleteListBtnIsClicked){
+      return <DeleteList handleCancleButton={handleCancleButton} />
     }
     return <ListMenu />;
   }

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
+
 
 function ToDoItem({ taskInfo, number, deleteTask }) {
   const [isDone, setIsDone] = useState(false);
@@ -7,7 +8,7 @@ function ToDoItem({ taskInfo, number, deleteTask }) {
     setIsDone(!isDone);
   }
 
-  function handleDeleteBtnClick() {
+  function handleDeleteTaskBtnClick() {
     deleteTask(taskInfo.taskID)
   }
 
@@ -18,7 +19,7 @@ function ToDoItem({ taskInfo, number, deleteTask }) {
         {taskInfo.taskName}
       </p>
       {isDone && (
-        <button onClick={handleDeleteBtnClick} className="todo-delete">
+        <button onClick={handleDeleteTaskBtnClick} className="todo-delete">
           Delete
         </button>
       )}
