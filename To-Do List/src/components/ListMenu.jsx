@@ -6,12 +6,13 @@ import { faTrash, faPlus } from "@fortawesome/free-solid-svg-icons";
 import AppContext from "./Context/AppContext";
 
 function ListMenu() {
-  const [taskID, setTaskID] = useState(1);
   const {
     setCreateBtnIsClicked,
     setDeleteListBtnIsClicked,
     currentList,
     setCurrentList,
+    taskID,
+    setTaskID
   } = useContext(AppContext);
 
   function handleCreateListButton() {

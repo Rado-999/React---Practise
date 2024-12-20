@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   const [deleteListBtnIsClicked, setDeleteListBtnIsClicked] = useState(false);
   const [currentList, setCurrentList] = useState({ tasks: [] });
   const [collectionID, setCollectionID] = useState(1);
+  const [taskID, setTaskID] = useState(1);
 
   useEffect(() => {
     setListCollection((prevState) => {
@@ -30,6 +31,8 @@ const AppProvider = ({ children }) => {
     setCurrentList: setCurrentList,
     collectionID: collectionID,
     setCollectionID: setCollectionID,
+    taskID: taskID,
+    setTaskID:setTaskID,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
